@@ -36,28 +36,35 @@ class _BasePageState extends State<BasePage> {
           BottomNavigationBarItem(
             label: AppStrings.manga,
             icon: Icon(
-              Icons.movie_creation_rounded,
+              Icons.animation_rounded,
               size: AppSize.s20,
             ),
           ),
           BottomNavigationBarItem(
             label: AppStrings.movie,
             icon: Icon(
-              Icons.tv_rounded,
+              Icons.movie_creation_outlined,
+              size: AppSize.s20,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: AppStrings.book,
+            icon: Icon(
+              Icons.book_outlined,
               size: AppSize.s20,
             ),
           ),
           BottomNavigationBarItem(
             label: AppStrings.tvshows,
             icon: Icon(
-              Icons.search_rounded,
+              Icons.tv_rounded,
               size: AppSize.s20,
             ),
           ),
           BottomNavigationBarItem(
             label: AppStrings.watchList,
             icon: Icon(
-              Icons.bookmark_rounded,
+              Icons.bookmark_border_rounded,
               size: AppSize.s20,
             ),
           ),
@@ -76,11 +83,14 @@ class _BasePageState extends State<BasePage> {
     if (location.startsWith(moviePath)) {
       return 1;
     }
-    if (location.startsWith(tvShowsPath)) {
+    if (location.startsWith(bookPath)) {
       return 2;
     }
-    if (location.startsWith(watchlistPath)) {
+    if (location.startsWith(tvShowsPath)) {
       return 3;
+    }
+    if (location.startsWith(watchlistPath)) {
+      return 4;
     }
     return 0;
   }
@@ -94,9 +104,12 @@ class _BasePageState extends State<BasePage> {
         context.goNamed(AppRoutes.movieRoute);
         break;
       case 2:
-        context.goNamed(AppRoutes.tvShows);
+        context.goNamed(AppRoutes.bookRoutes);
         break;
       case 3:
+        context.goNamed(AppRoutes.tvShowRoute);
+        break;
+      case 4:
         context.goNamed(AppRoutes.watchlistRoute);
         break;
     }
