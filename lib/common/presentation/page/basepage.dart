@@ -1,7 +1,7 @@
-import 'package:anime_app_flutter/common/resources/app_router.dart';
-import 'package:anime_app_flutter/common/resources/app_routes.dart';
-import 'package:anime_app_flutter/common/resources/app_strings.dart';
-import 'package:anime_app_flutter/common/resources/app_values.dart';
+import 'package:anime_app_flutter/common/domain/resources/app_router.dart';
+import 'package:anime_app_flutter/common/domain/resources/app_routes.dart';
+import 'package:anime_app_flutter/common/domain/resources/app_strings.dart';
+import 'package:anime_app_flutter/common/domain/resources/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
