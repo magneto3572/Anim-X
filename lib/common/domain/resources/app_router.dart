@@ -1,6 +1,7 @@
+import 'package:anime_app_flutter/anime/presentation/view/manga_home.dart';
 import 'package:anime_app_flutter/common/presentation/page/basepage.dart';
 import 'package:anime_app_flutter/common/domain/resources/app_routes.dart';
-import 'package:anime_app_flutter/manga/presentation/manga_home.dart';
+import 'package:anime_app_flutter/movie/presentation/view/movie_home.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,7 +27,7 @@ class AppRouter {
             name: AppRoutes.movieRoute,
             path: moviePath,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: Text("This is text 2"),
+              child: MovieHome(),
             ),
           ),
           GoRoute(

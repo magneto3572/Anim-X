@@ -1,7 +1,7 @@
 import 'package:anime_app_flutter/common/domain/resources/app_router.dart';
 import 'package:anime_app_flutter/common/domain/resources/app_strings.dart';
 import 'package:anime_app_flutter/common/presentation/theme/app_theme.dart';
-import 'package:anime_app_flutter/services/service_locator.dart';
+import 'package:anime_app_flutter/common/domain/services/service_locator.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
