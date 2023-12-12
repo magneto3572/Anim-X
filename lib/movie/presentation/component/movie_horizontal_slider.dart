@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:anime_app_flutter/common/data/network/api_constants.dart';
 import 'package:anime_app_flutter/common/domain/resources/app_colors.dart';
+import 'package:anime_app_flutter/common/presentation/component/image_with_shimmer.dart';
 import 'package:anime_app_flutter/common/presentation/component/text_with_dot_indicator.dart';
 import 'package:anime_app_flutter/movie/domain/models/upcoming_movie_model.dart';
 import 'package:flutter/material.dart';
@@ -28,14 +29,12 @@ class _MovieHorizontalSliderState extends State<MovieHorizontalSlider> {
           CarouselSlider.builder(
             itemCount: min(3, widget.resultList!.length),
             itemBuilder: ((context, index, realIndex) {
-              return Container(
+              return ImageWithShimmer(
+                imageUrl: ApiConstants.posterPath +
+                    widget.resultList![_currentIndex].posterPath!,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  image: NetworkImage(ApiConstants.posterPath +
-                      widget.resultList![_currentIndex].posterPath!),
-                  fit: BoxFit.cover,
-                )),
+                // this is required paremeter that is why we are adding since this will not effect beacse we already applied aspect ration to parents
+                height: 0,
               );
             }),
             options: CarouselOptions(

@@ -4,5 +4,6 @@ class AppRoutes {
   static const String bookRoutes = 'books';
   static const String tvShowRoute = 'tvshows';
   static const String watchlistRoute = 'watchlist';
+  static const String movieDetailsRoute = 'movieDetails';
   
 }

@@ -10,6 +10,7 @@ class GetMovieEvent extends MovieEvent {
   
   @override
   List<Object?> get props => [id];
+  
 }
 
 

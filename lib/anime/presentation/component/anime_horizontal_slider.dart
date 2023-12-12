@@ -1,15 +1,16 @@
 import 'dart:math';
 
-import 'package:anime_app_flutter/anime/domain/models/manga_airing_model.dart';
+
+import 'package:anime_app_flutter/anime/domain/models/TopMangaModel.dart';
 import 'package:anime_app_flutter/common/domain/resources/app_colors.dart';
-import 'package:anime_app_flutter/common/presentation/component/text_with_dot_indicator.dart';
+import 'package:anime_app_flutter/common/presentation/component/image_with_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class AnimeHorizontalSlider extends StatefulWidget {
-  final List<Results>? resultList;
+  final List<MangaData>? topAnimeAiringModelList;
 
-  const AnimeHorizontalSlider({super.key, required this.resultList});
+  const AnimeHorizontalSlider({super.key, required this.topAnimeAiringModelList});
 
   @override
   _AnimeHorizontalSliderState createState() => _AnimeHorizontalSliderState();
@@ -25,15 +26,12 @@ class _AnimeHorizontalSliderState extends State<AnimeHorizontalSlider> {
         alignment: Alignment.center,
         children: [
           CarouselSlider.builder(
-            itemCount: min(3, widget.resultList!.length),
+            itemCount: min(widget.topAnimeAiringModelList!.length, 3),
             itemBuilder: ((context, index, realIndex) {
-              return Container(
+              return ImageWithShimmer(
+                imageUrl: widget.topAnimeAiringModelList![_currentIndex].images!.jpg!.largeImageUrl.toString() ,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  image: NetworkImage(widget.resultList![_currentIndex].image!),
-                  fit: BoxFit.cover,
-                )),
+                height: 0,
               );
             }),
             options: CarouselOptions(
@@ -68,7 +66,7 @@ class _AnimeHorizontalSliderState extends State<AnimeHorizontalSlider> {
                 children: [
                   SizedBox(
                     child: Text(
-                      widget.resultList![_currentIndex].title!,
+                      widget.topAnimeAiringModelList![_currentIndex].title!,
                       overflow: TextOverflow.clip,
                       textAlign: TextAlign.center,
                       maxLines: 1,
@@ -79,21 +77,21 @@ class _AnimeHorizontalSliderState extends State<AnimeHorizontalSlider> {
                     ),
                   ),
                   const SizedBox(height: 5),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: List.generate(
+                  //       min(3,
+                  //           widget.topAnimeAiringModelList![_currentIndex].genres!.length),
+                  //       (index) {
+                  //     return TextWithDotIndicator(
+                  //         widget.topAnimeAiringModelList![_currentIndex].genres![index]
+                  //             .toString(),
+                  //         index < 2);
+                  //   }),
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                        min(3,
-                            widget.resultList![_currentIndex].genres!.length),
-                        (index) {
-                      return TextWithDotIndicator(
-                          widget.resultList![_currentIndex].genres![index]
-                              .toString(),
-                          index < 2);
-                    }),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(min(3, widget.resultList!.length),
+                    children: List.generate(min(3, widget.topAnimeAiringModelList!.length),
                         (index) {
                       double opac = (1 - (_currentIndex - index).abs() / 3)
                           .clamp(0.2, 1.0);

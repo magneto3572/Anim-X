@@ -18,11 +18,11 @@ class LightAppColors {
 }
 
 class DarkAppColors {
-  static const primary = Color(0xffef233c);
-  static const secondary = Color(0xff272b30);
-  static const primaryBackground = Color(0xff1a1d1f);
-  static const secondaryBackground = Color(0xff272b30);
-  static const primaryText = Color(0xffa9aaac);
+  static const primary = Color.fromARGB(255, 255, 255, 255);
+  static const secondary = Color.fromARGB(255, 0, 0, 0);
+  static const primaryBackground = Color.fromARGB(255, 14, 14, 14);
+  static const secondaryBackground = Color.fromARGB(255, 17, 18, 18);
+  static const primaryText = Color.fromARGB(255, 98, 103, 110);
   static const secondaryText = Colors.white;
   static const primaryBtnText = Colors.white;
   static const error = Colors.red;

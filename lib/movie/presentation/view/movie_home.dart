@@ -2,29 +2,31 @@ import 'package:anime_app_flutter/common/domain/resources/app_strings.dart';
 import 'package:anime_app_flutter/common/domain/utils/enums.dart';
 import 'package:anime_app_flutter/common/domain/services/service_locator.dart';
 import 'package:anime_app_flutter/common/presentation/component/horizontal_list_view.dart';
+import 'package:anime_app_flutter/common/presentation/component/main_loading_shimmer.dart';
 import 'package:anime_app_flutter/common/presentation/component/titled_header.dart';
-import 'package:anime_app_flutter/movie/presentation/bloc/movie_bloc.dart';
-import 'package:anime_app_flutter/movie/presentation/bloc/movie_event.dart';
-import 'package:anime_app_flutter/movie/presentation/bloc/movie_state.dart';
+import 'package:anime_app_flutter/movie/presentation/bloc/movie_home_bloc/movie_bloc.dart';
+import 'package:anime_app_flutter/movie/presentation/bloc/movie_home_bloc/movie_state.dart';
 import 'package:anime_app_flutter/movie/presentation/component/movie_horizontal_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../bloc/movie_home_bloc/movie_event.dart';
+
 class MovieHome extends StatelessWidget {
-  final int movieId = 1;
+  final int id = 1;
   const MovieHome({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<MovieBloc>()..add(GetMovieEvent(movieId)),
+      create: (context) => sl<MovieBloc>()..add(GetMovieEvent(id)),
       child: Scaffold(
         body: BlocBuilder<MovieBloc, MovieState>(
           builder: (context, state) {
             switch (state.status) {
               case RequestStatus.loading:
-                return const Center(child: CircularProgressIndicator());
+                return const MainLoadingShimmer();
               case RequestStatus.loaded:
                 return SingleChildScrollView(
                   child: Column(
@@ -53,7 +55,7 @@ class MovieHome extends StatelessWidget {
                   ),
                 );
               case RequestStatus.error:
-                return const Text("Something Went Wrong");
+                return const Center(child: Text("Something Went Wrong"));
             }
           },
         ),

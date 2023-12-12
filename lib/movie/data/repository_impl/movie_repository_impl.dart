@@ -3,6 +3,7 @@
 import 'package:anime_app_flutter/common/data/error/exception_handler.dart';
 import 'package:anime_app_flutter/common/data/error/failure.dart';
 import 'package:anime_app_flutter/movie/data/datasource/movie_remote_data_source.dart';
+import 'package:anime_app_flutter/movie/domain/models/movie_detail_model.dart';
 import 'package:anime_app_flutter/movie/domain/models/popular_movie_model.dart';
 import 'package:anime_app_flutter/movie/domain/models/top_rated_movide_model.dart';
 import 'package:anime_app_flutter/movie/domain/models/upcoming_movie_model.dart';
@@ -22,8 +23,8 @@ class MovieRepositoryImpl extends MovieRespository {
       return Right(result);
     } on ExceptionHandlder catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.message!));
-    } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message.toString()));
     }
   }
   
@@ -34,8 +35,8 @@ class MovieRepositoryImpl extends MovieRespository {
       return Right(result);
     } on ExceptionHandlder catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.message!));
-    } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message.toString()));
     }
   }
   
@@ -46,8 +47,20 @@ class MovieRepositoryImpl extends MovieRespository {
       return Right(result);
     } on ExceptionHandlder catch (failure) {
       return Left(ServerFailure(failure.errorMessageModel.message!));
-    } on DioError catch (failure) {
-      return Left(ServerFailure(failure.message));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MovieDetailModel>> getMovieDetails(int id) async {
+    try {
+      final result = await _movieRemoteDataSource.getMovideDetails(id);
+      return Right(result);
+    } on ExceptionHandlder catch (failure) {
+      return Left(ServerFailure(failure.errorMessageModel.message!));
+    } on DioException catch (failure) {
+      return Left(ServerFailure(failure.message.toString()));
     }
   }
 }

@@ -13,17 +13,20 @@ class BasePage extends StatefulWidget {
 
   final Widget child;
 
+  
+
   @override
   State<BasePage> createState() => _BasePageState();
 }
 
 class _BasePageState extends State<BasePage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async {
-          final String location = GoRouterState.of(context).location;
+          final String location = GoRouterState.of(context).matchedLocation;
           if (!location.startsWith(mangaPath)) {
             _onItemTapped(0, context);
           }
@@ -76,7 +79,7 @@ class _BasePageState extends State<BasePage> {
   }
 
   int _getSelectedIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).location;
+    final String location = GoRouterState.of(context).matchedLocation;
     if (location.startsWith(mangaPath)) {
       return 0;
     }

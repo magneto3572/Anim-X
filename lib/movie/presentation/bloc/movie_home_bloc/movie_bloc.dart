@@ -8,8 +8,8 @@ import 'package:anime_app_flutter/movie/domain/models/upcoming_movie_model.dart'
 import 'package:anime_app_flutter/movie/domain/usecases/get_popular_movie_usecase.dart';
 import 'package:anime_app_flutter/movie/domain/usecases/get_top_rated_usecase.dart';
 import 'package:anime_app_flutter/movie/domain/usecases/get_upcoming_movie_usecase.dart';
-import 'package:anime_app_flutter/movie/presentation/bloc/movie_event.dart';
-import 'package:anime_app_flutter/movie/presentation/bloc/movie_state.dart';
+import 'package:anime_app_flutter/movie/presentation/bloc/movie_home_bloc/movie_event.dart';
+import 'package:anime_app_flutter/movie/presentation/bloc/movie_home_bloc/movie_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
@@ -20,7 +20,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   MovieBloc(this._getTopRatedUseCase, this._getPopularMovieUseCase,
       this._getUpcomingMovieUseCase)
       : super(const MovieState()) {
-    on<MovieEvent>(_getCombindedApiCallEvent);
+    on<GetMovieEvent>(_getCombindedApiCallEvent);
   }
 
   Future<void> _getCombindedApiCallEvent(MovieEvent event, Emitter<MovieState> emit) async {
