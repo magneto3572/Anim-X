@@ -29,22 +29,22 @@ class TitleHeader extends StatelessWidget {
             title,
             style: textTheme.titleSmall,
           ),
-          InkWell(
-            onTap: onSeeAllTap,
-            child: Row(
-              children: [
-                Text(
-                  AppStrings.seeAll,
-                  style: textTheme.bodyLarge,
-                ),
-                const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: AppSize.s12,
-                  color: DarkAppColors.primaryText,
-                ),
-              ],
-            ),
-          )
+          // InkWell(
+          //   onTap: onSeeAllTap,
+          //   child: Row(
+          //     children: [
+          //       Text(
+          //         AppStrings.seeAll,
+          //         style: textTheme.bodyLarge,
+          //       ),
+          //       const Icon(
+          //         Icons.arrow_forward_ios_rounded,
+          //         size: AppSize.s12,
+          //         color: DarkAppColors.primaryText,
+          //       ),
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );

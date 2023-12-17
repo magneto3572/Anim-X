@@ -1,6 +1,5 @@
 
 
-
 import 'package:anime_app_flutter/anime/domain/models/TopAiringAnimeModel.dart';
 import 'package:anime_app_flutter/anime/domain/models/TopMangaModel.dart';
 import 'package:anime_app_flutter/common/domain/utils/enums.dart';

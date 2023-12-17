@@ -4,6 +4,11 @@ import 'package:anime_app_flutter/anime/domain/repository/mangaRepository.dart';
 import 'package:anime_app_flutter/anime/domain/usecases/get_top_manga.dart';
 import 'package:anime_app_flutter/anime/domain/usecases/get_top_airing_anime.dart';
 import 'package:anime_app_flutter/anime/presentation/bloc/anime_bloc.dart';
+import 'package:anime_app_flutter/books/data/datasource/book_remote_data_source.dart';
+import 'package:anime_app_flutter/books/data/repositoryImpl/book_repository_impl.dart';
+import 'package:anime_app_flutter/books/domain/repository/bookRepository.dart';
+import 'package:anime_app_flutter/books/domain/usecases/get_book_usecase.dart';
+import 'package:anime_app_flutter/books/presentation/bloc/book_bloc.dart';
 import 'package:anime_app_flutter/movie/data/datasource/movie_remote_data_source.dart';
 import 'package:anime_app_flutter/movie/data/repository_impl/movie_repository_impl.dart';
 import 'package:anime_app_flutter/movie/domain/repository/MovieRepository.dart';
@@ -24,10 +29,13 @@ class ServiceLocator {
         () => MangaRemoteDataSourceImpl());
     sl.registerLazySingleton<MovieRemoteDataSource>(
         () => MovieRemoteDataSourceImpl());
+    sl.registerLazySingleton<BookRemoteDataSource>(
+        () => BookRemoteDataSourceImpl());
 
     // Repository
     sl.registerLazySingleton<MangaRespository>(() => MangaRepositoryImpl(sl()));
     sl.registerLazySingleton<MovieRespository>(() => MovieRepositoryImpl(sl()));
+    sl.registerLazySingleton<BookRespository>(() => BookRepositoryImpl(sl()));
 
     // Use Cases
     sl.registerLazySingleton(() => GetTopAiringAnimeUsecase(sl()));
@@ -36,9 +44,11 @@ class ServiceLocator {
     sl.registerLazySingleton(() => GetTopRatedUseCase(sl()));
     sl.registerLazySingleton(() => GetUpcomingMovieUseCase(sl()));
     sl.registerLazySingleton(() => GetMovieDetailUsecase(sl()));
+    sl.registerLazySingleton(() => GetBookUsecase(sl()));
 
     // Bloc
     sl.registerFactory(() => AnimeBloc(sl(), sl()));
+    sl.registerFactory(() => BookBloc(sl()));
     sl.registerFactory(() => MovieBloc(sl(), sl(), sl()));
     sl.registerFactory(() => MovieDetailsBloc(sl()));
   }

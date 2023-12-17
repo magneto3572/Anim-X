@@ -1,4 +1,5 @@
 import 'package:anime_app_flutter/anime/presentation/view/manga_home.dart';
+import 'package:anime_app_flutter/books/presentation/view/book_home.dart';
 import 'package:anime_app_flutter/common/presentation/page/basepage.dart';
 import 'package:anime_app_flutter/common/domain/resources/app_routes.dart';
 import 'package:anime_app_flutter/movie/presentation/view/movie_details.dart';
@@ -46,7 +47,7 @@ class AppRouter {
             name: AppRoutes.bookRoutes,
             path: bookPath,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: Text("This is text 3"),
+              child: BookHome(),
             ),
           ),
           GoRoute(

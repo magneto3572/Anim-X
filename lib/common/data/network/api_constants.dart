@@ -4,6 +4,7 @@ class ApiConstants {
   static const String tmdbBaseUrl = "https://api.themoviedb.org/3";
   static const String posterPath = "https://image.tmdb.org/t/p/w500";
   static const String baseVideoUrl = 'https://www.youtube.com/watch?v=';
+  static const String mangaBaseUrl = "https://myanimelist.p.rapidapi.com";
 
   static String getAiringManga() {
     return '$baseUrl/v4/top/anime';
@@ -11,6 +12,10 @@ class ApiConstants {
 
   static String getFeaturedManga() {
     return '$baseUrl/v4/seasons/upcoming';
+  }
+
+  static String getTopManga() {
+    return '$mangaBaseUrl/manga/top/all';
   }
 
   static String getUpcomingMovie(int page) {

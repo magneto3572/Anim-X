@@ -48,8 +48,8 @@ class MangaHome extends StatelessWidget {
                           margin: const EdgeInsets.only(left: 10),
                           height: 180.0,
                           child: HorizontalListView(
-                              topAnimeAiringModel:
-                                  state.topAnimeAiringModel?.data)),
+                              topMangaModel:
+                                  state.topMangaModel?.data)),
                       const SizedBox(height: 10),
                     ],
                   ),
